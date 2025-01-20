@@ -22,7 +22,7 @@ const EmbedBox: React.FC<IEmbedEntryBox> = props => {
   return (
     <div
       className={tw(
-        `flex flex-col justify-items-start p-4 gap-4 rounded-lg bg(grey8 dark:grey1) w-full`,
+        `flex flex-col justify-items-start p-4 gap-4 rounded-[0.5rem] bg(grey8 dark:grey1) w-full`,
       )}
       data-testid="embed-box"
     >

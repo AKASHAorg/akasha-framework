@@ -21,13 +21,13 @@ export const BlockErrorCard: React.FC<BlockErrorCardProps> = props => {
     <Stack direction="row">
       <Stack
         background={{ light: 'errorLight', dark: 'errorDark' }}
-        customStyle="w-2.5 rounded-l-lg border border(errorLight dark:errorDark)"
+        customStyle="w-2.5 rounded-l-[0.5rem] border border(errorLight dark:errorDark)"
       />
       <Stack
         spacing="gap-y-1"
         padding="p-2"
         background={{ light: 'errorLight/30', dark: 'errorDark/30' }}
-        customStyle="rounded-r-lg border border(errorLight dark:errorDark)"
+        customStyle="rounded-r-[0.5rem] border border(errorLight dark:errorDark)"
         fullWidth
       >
         <Stack direction="row" align="center" spacing="gap-x-1">

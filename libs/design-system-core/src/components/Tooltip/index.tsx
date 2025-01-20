@@ -117,7 +117,7 @@ const Tooltip: React.FC<TooltipProps> = props => {
 
   const isContentOfTypeString = typeof content === 'string';
 
-  const contentStyle = isContentOfTypeString ? 'rounded-md py-[4px] px-[16px]' : '';
+  const contentStyle = isContentOfTypeString ? 'rounded-[0.375rem] py-[4px] px-[16px]' : '';
 
   const eventHandlers =
     trigger === 'hover'

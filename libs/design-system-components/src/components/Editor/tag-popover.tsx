@@ -20,7 +20,7 @@ export const TagPopover = React.forwardRef<HTMLDivElement, ITagPopover>((props, 
     <Portal>
       <div
         className={tw(
-          `absolute -top-[9999px] -left-[9999px] z-50 p-1 bg(grey9 dark: grey1) rounded-lg border(grey8 dark:grey8)`,
+          `absolute -top-[9999px] -left-[9999px] z-50 p-1 bg(grey9 dark: grey1) rounded-[0.5rem] border(grey8 dark:grey8)`,
         )}
         ref={ref}
       >
@@ -37,7 +37,7 @@ export const TagPopover = React.forwardRef<HTMLDivElement, ITagPopover>((props, 
           >
             <div
               className={tx(
-                `p-2 cursor-pointer p-1 rounded-sm max-w-xs min-w-[12rem] truncate hover:text(secondaryLight dark:secondaryDark) ${
+                `p-2 cursor-pointer p-1 rounded-[0.125rem] max-w-xs min-w-[12rem] truncate hover:text(secondaryLight dark:secondaryDark) ${
                   i === currentIndex && 'bg-grey3'
                 }`,
               )}

@@ -110,7 +110,7 @@ const TestModeWidget = () => {
                         <AppAvatar
                           height={2.5}
                           width={2.5}
-                          customStyle={'rounded-md'}
+                          customStyle={'rounded-[0.375rem]'}
                           appType={ext.applicationType}
                         />
                         <Stack direction="column" align="start">

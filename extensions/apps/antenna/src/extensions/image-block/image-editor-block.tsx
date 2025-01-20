@@ -450,7 +450,7 @@ export const ImageEditorBlock = (
                     <Image
                       alt={imageObj.name}
                       src={imageObj.originalSrc}
-                      customStyle="object-contain w-8 h-8 rounded-lg"
+                      customStyle="object-contain w-8 h-8 rounded-[0.5rem]"
                     />
                     <Text>{imageObj.name}</Text>
                   </Stack>

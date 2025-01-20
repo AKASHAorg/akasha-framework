@@ -42,7 +42,7 @@ const EntryCardHidden: React.FC<IEntryCardHiddenProps> = props => {
   return (
     <div
       className={tx(
-        `flex mb-1 rounded-lg border border-dashed ${
+        `flex mb-1 rounded-[0.5rem] border border-dashed ${
           delistedAccount && 'border-color(errorLight dark:errorDark)'
         }`,
       )}

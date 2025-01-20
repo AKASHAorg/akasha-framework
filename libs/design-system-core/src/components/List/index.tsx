@@ -76,14 +76,14 @@ const List = forwardRef<HTMLDivElement, ListProps>(
                   <ListElement
                     {...item}
                     onClick={handleItemClick(item, index)}
-                    customStyle={`${baseStyle} ${hoverStyle} first:rounded-t-lg	last:rounded-b-lg`}
+                    customStyle={`${baseStyle} ${hoverStyle} first:rounded-t-[0.5rem]	last:rounded-b-[0.5rem]`}
                   />
                 </Tooltip>
               ) : (
                 <ListElement
                   {...item}
                   onClick={handleItemClick(item, index)}
-                  customStyle={`${baseStyle} ${hoverStyle} first:rounded-t-lg	last:rounded-b-lg`}
+                  customStyle={`${baseStyle} ${hoverStyle} first:rounded-t-[0.5rem]	last:rounded-b-[0.5rem]`}
                 />
               )}
             </Fragment>

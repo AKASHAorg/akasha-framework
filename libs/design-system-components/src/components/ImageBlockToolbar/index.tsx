@@ -46,7 +46,7 @@ const ImageBlockToolbar: React.FC<ImageBlockToolbar> = props => {
           <Stack
             align="center"
             justify="center"
-            customStyle="relative w-8 h-8 rounded-l-sm"
+            customStyle="relative w-8 h-8 rounded-l-[0.125rem]"
             background={
               showCaption
                 ? { light: 'secondaryLight/30', dark: 'grey7' }
@@ -88,7 +88,7 @@ const ImageBlockToolbar: React.FC<ImageBlockToolbar> = props => {
           <Stack
             align="center"
             justify="center"
-            customStyle="relative w-8 h-8 rounded-r-sm"
+            customStyle="relative w-8 h-8 rounded-r-[0.125rem]"
             background={
               alignState === 'end'
                 ? { light: 'secondaryLight/30', dark: 'grey7' }

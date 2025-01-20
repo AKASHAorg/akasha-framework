@@ -16,7 +16,7 @@ const EntryPublishErrorCard: React.FC<PublishErrorCardProps> = props => {
     <EntryLoadingPlaceholder>
       <div
         className={tw(
-          `absolute inset-2 p-2 border(dashed secondaryLight dark:secondaryDark) rounded-lg flex justify-center items-center`,
+          `absolute inset-2 p-2 border(dashed secondaryLight dark:secondaryDark) rounded-[0.5rem] flex justify-center items-center`,
         )}
       >
         <Icon icon={<Square3Stack3DIcon />} color="grey1" />

@@ -142,7 +142,7 @@ const DateSelector: React.FC<DateSelectorProps> = ({
   const applyCellClasses = (day: string) => {
     const getSelectedDayStyle = () => {
       if (checkIfDayIsFirstOrSecondDate(day)) {
-        return `${selectedCellStyle} rounded-lg`;
+        return `${selectedCellStyle} rounded-[0.5rem]`;
       } else if (inBetweenDays(day)) {
         return selectedCellStyle;
       } else return '';
@@ -172,8 +172,8 @@ const DateSelector: React.FC<DateSelectorProps> = ({
           customStyle={`${
             inBetweenDays(day) ? 'px-1 bg-secondaryLight dark:bg-secondaryDark' : 'px-1'
           }
-                    ${compareDate(day) && 'rounded-l-lg'}
-                    ${compareDate(day, secondDate) && 'rounded-r-lg'}
+                    ${compareDate(day) && 'rounded-l-[0.5rem]'}
+                    ${compareDate(day, secondDate) && 'rounded-r-[0.5rem]'}
                     mb-1
                     `}
         >
