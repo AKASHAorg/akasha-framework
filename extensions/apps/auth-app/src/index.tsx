@@ -24,7 +24,7 @@ export const register = (opts: IntegrationRegistrationOptions): IAppConfig => {
     extensionPoints: [
       {
         mountsIn: 'topbar_login_button',
-        loadingFn: () => import('./extensions/login-bolt-button'),
+        rootComponent: () => import('./extensions/login-bolt-button'),
       },
     ],
   };

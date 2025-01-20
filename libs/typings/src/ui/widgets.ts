@@ -1,5 +1,5 @@
-import { ParcelConfigObject } from 'single-spa';
 import { ExtensionActivity, LayoutSlots, SupportedUILibs } from './app-loader';
+import { RootComponentType } from './extensions';
 
 /**
  * Type defining widget loading base configuration object
@@ -7,8 +7,7 @@ import { ExtensionActivity, LayoutSlots, SupportedUILibs } from './app-loader';
 type BaseWidgetInterface = {
   mountsIn: string;
   activeWhen?: ExtensionActivity;
-  loadingFn?: () => Promise<ParcelConfigObject>;
-  rootComponent?: () => Promise<{ default: React.ElementType }>;
+  rootComponent?: RootComponentType;
   UILib?: SupportedUILibs;
 };
 

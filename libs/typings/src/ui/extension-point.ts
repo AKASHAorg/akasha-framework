@@ -1,5 +1,6 @@
 import { ParcelConfigObject } from 'single-spa';
 import { ExtensionActivity, SupportedUILibs } from './app-loader';
+import { RootComponentType } from './extensions';
 
 /**
  * Type defining configuration object for loading an extension point
@@ -8,8 +9,7 @@ export type ExtensionPointInterface = {
   mountsIn: string;
   activeWhen?: ExtensionActivity;
   loadingFn?: () => Promise<ParcelConfigObject>;
-  rootComponent?: () => Promise<{ default: React.ElementType }>;
-  UILib?: SupportedUILibs;
+  rootComponent?: RootComponentType;
 };
 
 /**

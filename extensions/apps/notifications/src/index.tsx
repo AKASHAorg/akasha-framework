@@ -24,11 +24,11 @@ export const register = (opts: IntegrationRegistrationOptions): IAppConfig => ({
   extensionPoints: [
     {
       mountsIn: 'snackbar-notif-slot',
-      loadingFn: () => import('./extensions/snack-bar-notification'),
+      rootComponent: () => import('./extensions/snack-bar-notification'),
     },
     {
       mountsIn: 'topbar_notification_button',
-      loadingFn: () => import('./extensions/rounded-notification-button'),
+      rootComponent: () => import('./extensions/rounded-notification-button'),
     },
   ],
 });

@@ -96,7 +96,10 @@ export const ContentBlockExtension: React.FC<ContentBlockExtensionProps> = props
 
   useLayoutEffect(() => {
     if (matchingBlocks && matchingBlocks.length !== state.parcels.length) {
-      resolveConfigs({ matchingBlocks, mode: ContentBlockModes.READONLY, cache: cacheBlockConfig })
+      resolveConfigs(
+        { matchingBlocks, mode: ContentBlockModes.READONLY, cache: cacheBlockConfig },
+        { logger },
+      )
         .then(newBlocks => {
           setState({
             parcels: newBlocks,

@@ -4,6 +4,7 @@ import { useRootComponentProps } from '@akashaorg/ui-core-hooks';
 import { ExtensionPointInterface, IExtensionPointStorePlugin } from '@akashaorg/typings/lib/ui';
 import Stack from '@akashaorg/design-system-core/lib/components/Stack';
 import { RootParcel } from './root-parcel';
+import { createLifecycles } from '../utils/create-lifecycles';
 
 export type ExtensionComponentProps<D> = {
   name: string;
@@ -49,8 +50,13 @@ export const Extension = <D,>(props: ExtensionComponentProps<D>) => {
         if (newExtensions.find(parcel => parcel.extension.appName === extension.appName)) return;
 
         try {
-          const config = await extension.loadingFn();
-          newExtensions.push({ config, extension });
+          const lifecycles = await createLifecycles(extension.rootComponent, undefined, {
+            logger,
+            onModuleError: () => {},
+            onRenderError: () => {},
+            onScriptError: () => {},
+          });
+          newExtensions.push({ config: lifecycles, extension });
         } catch (err) {
           logger.error(`Failed to load extension ${extension}: ${err.message}`);
           onError?.(extension);

@@ -1,9 +1,6 @@
-import singleSpaReact from 'single-spa-react';
-import ReactDOMClient from 'react-dom/client';
 import React from 'react';
 import { useRootComponentProps, withProviders, useModalData } from '@akashaorg/ui-core-hooks';
 import { IRootExtensionProps } from '@akashaorg/typings/lib/ui';
-import ErrorLoader from '@akashaorg/design-system-core/lib/components/ErrorLoader';
 import Modal from '@akashaorg/design-system-core/lib/components/Modal';
 import { I18nextProvider, useTranslation } from 'react-i18next';
 import { useUpdateBeamMutation } from '@akashaorg/ui-core-hooks/lib/generated/apollo';
@@ -82,16 +79,4 @@ const RemoveBeamModal = (props: IRootExtensionProps) => {
     </I18nextProvider>
   );
 };
-
-export const { bootstrap, mount, unmount } = singleSpaReact({
-  React,
-  ReactDOMClient,
-  rootComponent: withProviders(RemoveBeamModal),
-  errorBoundary: (err, errorInfo, props: IRootExtensionProps) => {
-    if (props.logger) {
-      props.logger.error(`${JSON.stringify(errorInfo)}, ${errorInfo}`);
-    }
-
-    return <ErrorLoader type="script-error" title="Error in editor" details={err.message} />;
-  },
-});
+export default withProviders(RemoveBeamModal);

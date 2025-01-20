@@ -2,6 +2,7 @@ import getSDK from '@akashaorg/core-sdk';
 import { ContentBlockModes } from '@akashaorg/typings/lib/ui';
 import { MatchingBlock } from './common.types';
 import { hasOwn } from '@akashaorg/ui-core-hooks';
+import { createLifecycles, CreateLifecyclesOptions } from '../../utils/create-lifecycles';
 
 interface IResolveConfigs {
   matchingBlocks: MatchingBlock[];
@@ -13,10 +14,13 @@ interface IResolveConfigs {
 const sdk = getSDK();
 const uiStash = sdk.services.stash.getUiStash();
 
-export const resolveConfigs = async ({ matchingBlocks, mode, cache }: IResolveConfigs) => {
+export const resolveConfigs = async (
+  { matchingBlocks, mode, cache }: IResolveConfigs,
+  options: CreateLifecyclesOptions,
+) => {
   const newBlocks = [];
   for (const block of matchingBlocks) {
-    const config = await getConfig({ block, mode, cache });
+    const config = await getConfig({ block, mode, cache }, options);
     newBlocks.push({ ...block, config });
   }
   return newBlocks;
@@ -28,23 +32,17 @@ interface IConfig {
   cache?: boolean;
 }
 
-const getConfig = async ({ block, mode, cache }: IConfig) => {
+const getConfig = async ({ block, mode, cache }: IConfig, options: CreateLifecyclesOptions) => {
   if (cache) {
     let id = null;
     if (block?.blockData && hasOwn(block.blockData, 'id')) {
       id = `${block.blockInfo.appName}-${block.blockData.id}`;
     }
     if (!uiStash.has(id)) {
-      const config = await block.blockInfo.loadingFn({
-        blockInfo: { ...block.blockInfo, mode },
-        blockData: block.blockData,
-      })();
+      const config = await createLifecycles(block.blockInfo.rootComponent, undefined, options);
       uiStash.set(id, config);
     }
     return uiStash.get(id);
   }
-  return block.blockInfo.loadingFn({
-    blockInfo: { ...block.blockInfo, mode },
-    blockData: block.blockData,
-  })();
+  return await createLifecycles(block.blockInfo.rootComponent, undefined, options);
 };

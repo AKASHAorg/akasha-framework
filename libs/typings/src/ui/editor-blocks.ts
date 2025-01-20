@@ -3,6 +3,7 @@ import singleSpa from 'single-spa';
 import { IRootComponentProps } from './root-component';
 import { GetContentBlockByIdQuery } from '../sdk/graphql-operation-types-new';
 import { BlockLabeledValue } from '../sdk/graphql-types-new';
+import { RootComponentType } from './extensions';
 
 /**
  * Enum defining content block modes
@@ -28,7 +29,8 @@ export type ContentBlockConfig = {
   icon?: React.ReactElement;
   displayName: string;
   externalHandler?: (value: boolean) => void;
-  loadingFn: (options: {
+  rootComponent?: RootComponentType;
+  loadingFn?: (options: {
     blockInfo: BlockInfo;
     blockData: GetContentBlockByIdQuery['node'];
   }) => () => Promise<singleSpa.ParcelConfigObject<ContentBlockRootProps>>;

@@ -26,7 +26,7 @@ export const BlockParcel: React.FC<BlockParcelProps> = props => {
   const handleParcelError = React.useCallback(
     (parcelName: string) => {
       return error => {
-        if (logger) logger.error(`error in parcel ${parcelName}: ${error}`);
+        if (logger) logger.error('error in parcel %s: %o', parcelName, error);
         onError?.(error);
       };
     },

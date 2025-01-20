@@ -68,7 +68,7 @@ export const register = (opts: IntegrationRegistrationOptions): IAppConfig => ({
   extensionPoints: [
     {
       mountsIn: 'remove-extension-confirmation',
-      loadingFn: () => import('./extensions/remove-extension-confirmation'),
+      rootComponent: () => import('./extensions/remove-extension-confirmation'),
     },
   ],
 });

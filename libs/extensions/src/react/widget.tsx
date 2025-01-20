@@ -6,6 +6,7 @@ import { useRoutingEvents } from './use-routing-events';
 import { WidgetInterface, IWidgetStorePlugin } from '@akashaorg/typings/lib/ui';
 import Parcel from 'single-spa-react/parcel';
 import Stack from '@akashaorg/design-system-core/lib/components/Stack';
+import { createLifecycles } from '../utils/create-lifecycles';
 
 export type WidgetExtensionProps = {
   name: string;
@@ -47,26 +48,11 @@ export const Widget: React.FC<WidgetExtensionProps> = props => {
       for (const widget of widgets) {
         if (newWidgets.find(p => p.widget.appName === widget.appName)) return;
         try {
-          const lifecycles = singleSpaReact({
-            React,
-            ReactDOMClient,
-            loadRootComponent: async () => {
-              try {
-                const importer = await widget.rootComponent();
-                if (!importer.default) {
-                  logger.error('widget: %s, does not have a default export', widget.appName);
-                }
-                return importer.default;
-              } catch (err) {
-                logger.error("error importing %s widget's root component", widget.appName);
-              }
-            },
-            errorBoundary: (err, info, props) => {
-              logger.error(err);
-              logger.error(info);
-              logger.error(props);
-              return null;
-            },
+          const lifecycles = await createLifecycles(widget.rootComponent, widget.UILib, {
+            logger: logger,
+            onModuleError: () => {},
+            onRenderError: () => {},
+            onScriptError: () => {},
           });
           newWidgets.push({ config: lifecycles, widget });
         } catch (err) {
@@ -78,7 +64,7 @@ export const Widget: React.FC<WidgetExtensionProps> = props => {
       setParcelConfigs(newWidgets);
     };
 
-    resolveConfigs().catch();
+    resolveConfigs().catch(err => onError(undefined, err.message));
   }, [widgets, onError, logger]);
 
   const handleParcelError = React.useCallback(

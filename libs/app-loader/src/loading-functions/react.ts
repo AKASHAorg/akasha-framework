@@ -15,6 +15,7 @@ export const getLifecycles = (
       const componentImport = rootComponent();
       try {
         const mod = await componentImport;
+
         if (!mod.default) {
           onModuleError(new Error('Component must have default export'), {
             name: props.name,
@@ -22,7 +23,8 @@ export const getLifecycles = (
           });
           return null;
         }
-        return mod.default;
+
+        return mod.default as React.ElementType;
       } catch (ex) {
         onModuleError(new Error('Failed to import module'), {
           name: props.name,

@@ -1,7 +1,5 @@
-import singleSpa from 'single-spa';
 import { ExtensionActivity, SupportedUILibs } from './app-loader';
 import { IMenuItem } from './sidebar-menu-items';
-import { IRootComponentProps } from './root-component';
 import { ContentBlockConfig } from './editor-blocks';
 import { ExtensionPointInterface } from './extension-point';
 import { AkashaAppApplicationType, AkashaAppInterface } from '../sdk/graphql-types-new';
@@ -16,6 +14,7 @@ export enum ExtensionStatus {
   Published = 'Published',
 }
 
+export type RootComponentType = () => Promise<{ default: unknown }>;
 /**
  * Type defining extension image types
  **/
@@ -68,9 +67,8 @@ export interface IAppConfig {
   routes?: {
     [key: string]: string;
   };
-  rootComponent?: () => Promise<{ default: React.ElementType }>;
+  rootComponent?: RootComponentType;
   UILib?: SupportedUILibs;
-  loadingFn?: () => Promise<singleSpa.LifeCycles<IRootComponentProps>>;
   /**
    * The content of a Beam (aka. post) is a list of 1 or more contentBlocks.
    * These are provided by the apps and should have 2 versions:
