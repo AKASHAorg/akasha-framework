@@ -70,7 +70,7 @@ export const Gallery: React.FC<GalleryProps> = props => {
           {displayImages.map((image, index) => (
             <Stack
               key={index}
-              customStyle="w-[6.125rem] h-[6.125rem] sm:w-[10.625rem] sm:h-[10.625rem] overflow-hidden object-cover rounded-lg cursor-pointer"
+              customStyle="w-[6.125rem] h-[6.125rem] sm:w-[10.625rem] sm:h-[10.625rem] overflow-hidden object-cover rounded-[0.5rem] cursor-pointer"
             >
               <Image
                 alt={image.name}

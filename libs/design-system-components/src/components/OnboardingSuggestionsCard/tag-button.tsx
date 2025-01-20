@@ -19,7 +19,7 @@ export const TagButton: React.FC<ITagButton> = props => {
   return (
     <button
       className={tw(
-        `max-w-[150px] border(grey8 dark:grey3) rounded-lg px-4 py-1 gap-2 ${bgClass} ${flexClass}`,
+        `max-w-[150px] border(grey8 dark:grey3) rounded-[0.5rem] px-4 py-1 gap-2 ${bgClass} ${flexClass}`,
       )}
       onClick={onClickTag}
     >

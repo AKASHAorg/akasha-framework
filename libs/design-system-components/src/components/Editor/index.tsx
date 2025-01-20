@@ -524,7 +524,7 @@ const EditorBox: React.FC<EditorBoxProps> = props => {
             >
               {withToolbar && (
                 <Stack direction="row">
-                  <MarkButton format="bold" icon={<Bold />} style={'rounded-l-sm'} />
+                  <MarkButton format="bold" icon={<Bold />} style={'rounded-l-[0.125rem]'} />
                   <MarkButton format="italic" icon={<Italic />} />
                   <MarkButton format="underline" icon={<Underline />} />
                   <BlockButton format="left" icon={<AlignTextLeft />} />
@@ -534,7 +534,7 @@ const EditorBox: React.FC<EditorBoxProps> = props => {
                   <BlockButton
                     format="bulleted-list"
                     icon={<ListBulleted />}
-                    style={'rounded-r-sm'}
+                    style={'rounded-r-[0.125rem]'}
                   />
                 </Stack>
               )}

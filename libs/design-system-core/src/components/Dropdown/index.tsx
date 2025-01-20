@@ -67,7 +67,7 @@ const Dropdown: React.FC<DropdownProps> = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const optionsWrapperStyle = apply`absolute w-full z-10 max-h-60 ${label ? 'mt-[70px]' : 'mt-[2.5rem]'} rounded-lg overflow-auto bg-(white dark:grey3)`;
+  const optionsWrapperStyle = apply`absolute w-full z-10 max-h-60 ${label ? 'mt-[70px]' : 'mt-[2.5rem]'} rounded-[0.5rem] overflow-auto bg-(white dark:grey3)`;
 
   const optionStyle = apply`flex items-center justify-between py-1.5 px-2 bg-(hover:grey8 dark:hover:grey5)`;
 
@@ -88,7 +88,7 @@ const Dropdown: React.FC<DropdownProps> = props => {
     <Stack customStyle={`relative min-w-[8rem] gap-y-2 ${customStyle}`} ref={anchorRef}>
       {label && <Label required={required}>{label}</Label>}
       <button
-        className={tx`inline-flex items-center justify-between min-w-[8rem] p-2 rounded-lg bg-(white dark:grey3) rounded-lg border-(1 solid ${
+        className={tx`inline-flex items-center justify-between min-w-[8rem] p-2 rounded-[0.5rem] bg-(white dark:grey3) rounded-[0.5rem] border-(1 solid ${
           dropOpen ? 'secondaryLight dark:secondark-dark' : 'grey6 dark:grey5'
         })`}
         onClick={handleDropClick}

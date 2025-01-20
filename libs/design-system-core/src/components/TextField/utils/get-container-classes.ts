@@ -14,7 +14,7 @@ export function getContainerClasses(
 ) {
   const defaultBgColors = `white dark:grey3`;
   const altBgColors = `grey9 dark:grey3`;
-  const style = `rounded-lg bg(${altBg ? altBgColors : defaultBgColors}) border border(grey6 dark:none)`;
+  const style = `rounded-[0.5rem] bg(${altBg ? altBgColors : defaultBgColors}) border border(grey6 dark:none)`;
 
   if (!disabled && !readOnly && !status) {
     return `${style} focus-within:border focus-within:border-secondaryLight dark:focus-within:border-secondaryDark`;

@@ -64,7 +64,7 @@ const DropdownFilter: React.FC<IDropdownFilterProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const optionsWrapperStyle = apply`absolute z-10 max-h-60 mt-14 py-0 rounded-lg overflow-auto bg-(white dark:grey3) border(1 grey8 dark:grey5)`;
+  const optionsWrapperStyle = apply`absolute z-10 max-h-60 mt-14 py-0 rounded-[0.5rem] overflow-auto bg-(white dark:grey3) border(1 grey8 dark:grey5)`;
 
   const optionStyle = apply`flex items-center justify-between p-3 bg-(hover:grey8 dark:hover:grey3)`;
 
@@ -86,7 +86,7 @@ const DropdownFilter: React.FC<IDropdownFilterProps> = ({
       {label && <Text variant="label">{label}</Text>}
 
       <button
-        className={tx`inline-flex items-center justify-between w-full ${padding} rounded-lg bg-(white dark:grey3) rounded-lg border-(1 solid ${
+        className={tx`inline-flex items-center justify-between w-full ${padding} rounded-[0.5rem] bg-(white dark:grey3) rounded-[0.5rem] border-(1 solid ${
           dropOpen ? 'secondaryLight dark:secondark-dark' : 'grey8 dark:grey3'
         }) ${customStyle}`}
         onClick={handleDropClick}

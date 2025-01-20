@@ -96,7 +96,7 @@ const DatePicker: React.FC<TDatePickerProps> = props => {
           direction="row"
           align="center"
           justify="start"
-          customStyle={`border(1 grey8) dark:border(1 grey5) rounded-lg px-2 w-full h-8 cursor-pointer ${
+          customStyle={`border(1 grey8) dark:border(1 grey5) rounded-[0.5rem] px-2 w-full h-8 cursor-pointer ${
             showDatepicker ? 'border(2 secondaryLight) dark:border(2 secondaryDark)' : ''
           })`}
         >

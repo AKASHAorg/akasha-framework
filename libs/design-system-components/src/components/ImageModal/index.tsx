@@ -140,7 +140,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
             const imageUrl = typeof imageData === 'string' ? imageData : imageData?.src;
             return (
               <Button key={index} onClick={() => setSelectedIndexImage(index)} plain>
-                <Img src={imageUrl} customStyle="object-contain w-10 h-10 rounded-lg" />
+                <Img src={imageUrl} customStyle="object-contain w-10 h-10 rounded-[0.5rem]" />
               </Button>
             );
           })}
@@ -199,7 +199,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
             max={MAX_ZOOM}
             step={ZOOM_STEP}
             className={tw(
-              'grow h-2 bg(gray-200 dark:gray-700) rounded-lg appearance-none cursor-pointer',
+              'grow h-2 bg(gray-200 dark:gray-700) rounded-[0.5rem] appearance-none cursor-pointer',
             )}
             onChange={e => setZoom(Number(e.target.value))}
           />

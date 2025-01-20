@@ -34,7 +34,7 @@ cursor-pointer
 before:absolute after:absolute before:visible after:visible
 after:content-[''] before:content-['']
 before:inline-block after:inline-block
-before:rounded-md
+before:rounded-[0.375rem]
 before:left-2
 after:left-2
 `;
