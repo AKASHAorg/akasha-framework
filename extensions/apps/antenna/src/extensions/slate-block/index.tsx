@@ -1,15 +1,11 @@
 import * as React from 'react';
-import singleSpaReact from 'single-spa-react';
-import ReactDOMClient from 'react-dom/client';
 import { I18nextProvider } from 'react-i18next';
 import { useRootComponentProps, withProviders } from '@akashaorg/ui-core-hooks';
-import ErrorLoader from '@akashaorg/design-system-core/lib/components/ErrorLoader';
 
 import {
   BlockInstanceMethods,
   ContentBlockModes,
   ContentBlockRootProps,
-  IRootComponentProps,
 } from '@akashaorg/typings/lib/ui';
 import { SlateEditorBlock } from './slate-editor-block';
 import { SlateReadonlyBlock } from './slate-readonly-block';
@@ -25,7 +21,9 @@ const SlateBlockExtension = (
     </I18nextProvider>
   );
 };
+export default withProviders<ContentBlockRootProps>(SlateBlockExtension);
 
+/*
 export const { bootstrap, mount, unmount } = singleSpaReact({
   React,
   ReactDOMClient,
@@ -38,3 +36,4 @@ export const { bootstrap, mount, unmount } = singleSpaReact({
     return <ErrorLoader type="script-error" title="Error in slate-block" details={err.message} />;
   },
 });
+*/

@@ -1,14 +1,7 @@
 import * as React from 'react';
 import Button from '@akashaorg/design-system-core/lib/components/Button';
-import {
-  BoltIcon,
-  ExclamationTriangleIcon,
-} from '@akashaorg/design-system-core/lib/components/Icon/hero-icons-outline';
+import { BoltIcon } from '@akashaorg/design-system-core/lib/components/Icon/hero-icons-outline';
 import { useRootComponentProps, withProviders } from '@akashaorg/ui-core-hooks';
-import singleSpaReact from 'single-spa-react';
-import ReactDOMClient from 'react-dom/client';
-import type { IRootComponentProps } from '@akashaorg/typings/lib/ui';
-import Icon from '@akashaorg/design-system-core/lib/components/Icon';
 
 const LoginBoltButton = () => {
   const { getCorePlugins } = useRootComponentProps();
@@ -32,14 +25,4 @@ const LoginBoltButton = () => {
   );
 };
 
-export const { bootstrap, mount, unmount } = singleSpaReact({
-  React,
-  ReactDOMClient,
-  rootComponent: withProviders(LoginBoltButton),
-  errorBoundary: (err, errorInfo, props: IRootComponentProps) => {
-    if (props.logger) {
-      props.logger.error(`${JSON.stringify(errorInfo)}, ${errorInfo}`);
-    }
-    return <Icon icon={<ExclamationTriangleIcon />} />;
-  },
-});
+export default withProviders(LoginBoltButton);

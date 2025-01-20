@@ -13,7 +13,7 @@ import routes, { BEAMS, EDIT, FOLLOWERS, FOLLOWING, INTERESTS } from './routes';
  */
 export const register = (opts: IntegrationRegistrationOptions): IAppConfig => ({
   mountsIn: opts.layoutSlots?.applicationSlotId,
-  loadingFn: () => import('./components'),
+  rootComponent: () => import('./components'),
   i18nNamespace: ['app-profile', 'ui-lib-feed'],
   menuItems: [
     {
@@ -31,15 +31,15 @@ export const register = (opts: IntegrationRegistrationOptions): IAppConfig => ({
   extensionPoints: [
     {
       mountsIn: 'login',
-      loadingFn: () => import('./extensions/login-modal'),
+      rootComponent: () => import('./extensions/login-modal'),
     },
     {
       mountsIn: 'follow_*',
-      loadingFn: () => import('./extensions/follow-profile-button'),
+      rootComponent: () => import('./extensions/follow-profile-button'),
     },
     {
       mountsIn: 'profile_avatar_*',
-      loadingFn: () => import('./extensions/profile-avatar'),
+      rootComponent: () => import('./extensions/profile-avatar'),
     },
   ],
   routes: {

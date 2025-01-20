@@ -1,20 +1,12 @@
 import React from 'react';
-import ReactDOMClient from 'react-dom/client';
-import singleSpaReact from 'single-spa-react';
-import { useNotifications, useRootComponentProps, withProviders } from '@akashaorg/ui-core-hooks';
+import { useRootComponentProps, withProviders } from '@akashaorg/ui-core-hooks';
 import { BellAlert } from '@akashaorg/design-system-core/lib/components/Icon/akasha-icons';
 
-import {
-  NotificationEvents,
-  type IRootComponentProps,
-  type UIEventData,
-} from '@akashaorg/typings/lib/ui';
+import { NotificationEvents, type UIEventData } from '@akashaorg/typings/lib/ui';
 import {
   BellIcon,
   BellSnoozeIcon,
-  ExclamationTriangleIcon,
 } from '@akashaorg/design-system-core/lib/components/Icon/hero-icons-outline';
-import Icon from '@akashaorg/design-system-core/lib/components/Icon';
 import Button from '@akashaorg/design-system-core/lib/components/Button';
 import getSDK from '@akashaorg/core-sdk';
 import { NOTIFICATION_EVENTS } from '@akashaorg/typings/lib/sdk';
@@ -121,15 +113,4 @@ const RoundedNotificationButton = () => {
     />
   );
 };
-
-export const { bootstrap, mount, unmount } = singleSpaReact({
-  React,
-  ReactDOMClient,
-  rootComponent: withProviders(RoundedNotificationButton),
-  errorBoundary: (err, errorInfo, props: IRootComponentProps) => {
-    if (props.logger) {
-      props.logger.error(`${JSON.stringify(errorInfo)}, ${errorInfo}`);
-    }
-    return <Icon icon={<ExclamationTriangleIcon />} />;
-  },
-});
+export default withProviders(RoundedNotificationButton);

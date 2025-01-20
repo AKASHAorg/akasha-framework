@@ -154,21 +154,4 @@ const SnackBarNotification: React.FC<IRootExtensionProps> = () => {
     </Stack>
   );
 };
-
-export const { bootstrap, mount, unmount } = singleSpaReact({
-  React,
-  ReactDOMClient,
-  rootComponent: withProviders(SnackBarNotification),
-  errorBoundary: (error, errorInfo, props: IRootExtensionProps) => {
-    if (props.logger) {
-      props.logger.error(`${JSON.stringify(error)}, ${errorInfo}`);
-    }
-    return (
-      <ErrorLoader
-        type="script-error"
-        title="Error in snackbar notification extension"
-        details={error.message}
-      />
-    );
-  },
-});
+export default withProviders(SnackBarNotification);

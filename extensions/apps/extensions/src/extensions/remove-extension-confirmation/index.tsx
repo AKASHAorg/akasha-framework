@@ -1,5 +1,3 @@
-import singleSpaReact from 'single-spa-react';
-import ReactDOMClient from 'react-dom/client';
 import React from 'react';
 import {
   useRootComponentProps,
@@ -8,7 +6,6 @@ import {
   useAkashaStore,
 } from '@akashaorg/ui-core-hooks';
 import { EventTypes, Extension, IRootExtensionProps } from '@akashaorg/typings/lib/ui';
-import ErrorLoader from '@akashaorg/design-system-core/lib/components/ErrorLoader';
 import Modal from '@akashaorg/design-system-core/lib/components/Modal';
 import { I18nextProvider, useTranslation } from 'react-i18next';
 import { useUpdateAppMutation } from '@akashaorg/ui-core-hooks/lib/generated/apollo';
@@ -157,22 +154,4 @@ const RemoveAppModal = (props: IRootExtensionProps) => {
     </I18nextProvider>
   );
 };
-
-export const { bootstrap, mount, unmount } = singleSpaReact({
-  React,
-  ReactDOMClient,
-  rootComponent: withProviders(RemoveAppModal),
-  errorBoundary: (err, errorInfo, props: IRootExtensionProps) => {
-    if (props.logger) {
-      props.logger.error(`${JSON.stringify(errorInfo)}, ${errorInfo}`);
-    }
-
-    return (
-      <ErrorLoader
-        type="script-error"
-        title="Error in remove extension modal"
-        details={err.message}
-      />
-    );
-  },
-});
+export default withProviders(RemoveAppModal);

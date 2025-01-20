@@ -12,7 +12,7 @@ import React from 'react';
 import { BellIcon } from '@akashaorg/design-system-core/lib/components/Icon/hero-icons-outline';
 
 export const register = (opts: IntegrationRegistrationOptions): IAppConfig => ({
-  loadingFn: () => import('./components'),
+  rootComponent: () => import('./components'),
   mountsIn: opts.layoutSlots?.applicationSlotId,
   i18nNamespace: ['app-notifications'],
   menuItems: {
@@ -24,11 +24,11 @@ export const register = (opts: IntegrationRegistrationOptions): IAppConfig => ({
   extensionPoints: [
     {
       mountsIn: 'snackbar-notif-slot',
-      loadingFn: () => import('./extensions/snack-bar-notification'),
+      rootComponent: () => import('./extensions/snack-bar-notification'),
     },
     {
       mountsIn: 'topbar_notification_button',
-      loadingFn: () => import('./extensions/rounded-notification-button'),
+      rootComponent: () => import('./extensions/rounded-notification-button'),
     },
   ],
 });

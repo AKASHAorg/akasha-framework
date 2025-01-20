@@ -33,7 +33,7 @@ import { PhotoIcon } from '@akashaorg/design-system-core/lib/components/Icon/her
  */
 
 export const register = (opts: IntegrationRegistrationOptions): IAppConfig => ({
-  loadingFn: () => import('./components'),
+  rootComponent: () => import('./components'),
   mountsIn: opts.layoutSlots?.applicationSlotId,
 
   /**
@@ -74,27 +74,23 @@ export const register = (opts: IntegrationRegistrationOptions): IAppConfig => ({
       propertyType: 'slate-block',
       icon: <TextIcon />,
       displayName: 'Slate text block',
-      loadingFn: () => {
-        return () => import('./extensions/slate-block');
-      },
+      rootComponent: () => import('./extensions/slate-block'),
     },
     {
       propertyType: 'image-block',
       icon: <PhotoIcon />,
       displayName: 'Image block',
-      loadingFn: () => {
-        return () => import('./extensions/image-block');
-      },
+      rootComponent: () => import('./extensions/image-block'),
     },
   ],
   extensionPoints: [
     {
       mountsIn: 'beam-editor_*',
-      loadingFn: () => import('./extensions/beam-editor'),
+      rootComponent: () => import('./extensions/beam-editor'),
     },
     {
       mountsIn: 'remove-beam-confirmation',
-      loadingFn: () => import('./extensions/remove-beam-confirmation'),
+      rootComponent: () => import('./extensions/remove-beam-confirmation'),
     },
   ],
 });
