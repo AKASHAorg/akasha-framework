@@ -9,6 +9,7 @@ import {
   FormProvider,
   useFormContext,
 } from 'react-hook-form';
+import { CircleX } from 'lucide-react';
 
 import { cn } from '@/library/utils';
 import { Label } from '@/components/label';
@@ -88,7 +89,7 @@ const FormLabel = React.forwardRef<
   return (
     <Label
       ref={ref}
-      className={cn(error && 'text-destructive', className)}
+      className={cn(error && 'text-destructive', 'text-base', className)}
       htmlFor={formItemId}
       {...props}
     />
@@ -146,9 +147,10 @@ const FormMessage = React.forwardRef<
     <p
       ref={ref}
       id={formMessageId}
-      className={cn('text-sm font-medium text-destructive', className)}
+      className={cn('flex items-center gap-1 text-sm text-destructive', className)}
       {...props}
     >
+      <CircleX size={16} className="text-destructive" />
       {body}
     </p>
   );
