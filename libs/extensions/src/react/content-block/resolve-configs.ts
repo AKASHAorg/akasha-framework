@@ -44,5 +44,5 @@ const getConfig = async ({ block, mode, cache }: IConfig, options: CreateLifecyc
     }
     return uiStash.get(id);
   }
-  return await createLifecycles(block.blockInfo.rootComponent, undefined, options);
+  return createLifecycles(block.blockInfo.rootComponent, undefined, options);
 };
