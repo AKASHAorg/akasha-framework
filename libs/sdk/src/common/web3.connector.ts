@@ -12,7 +12,7 @@ import AWF_Config from './config';
 import { AppKit, createAppKit } from '@reown/appkit';
 import { EthersAdapter } from '@reown/appkit-adapter-ethers';
 import { sepolia } from '@reown/appkit/networks';
-import type { ConnectMethod } from '@reown/appkit-core';
+import type { ConnectMethod, OptionsControllerState } from '@reown/appkit-core';
 
 @injectable()
 class Web3Connector {
@@ -144,6 +144,15 @@ class Web3Connector {
    */
   setConnectionFeatures(connectionFeatures: ConnectMethod[] = ['wallet']) {
     this.#w3modal.setConnectMethodsOrder(connectionFeatures);
+  }
+
+  /**
+   * Updates the options of the reown AppKit instance/modal.
+   *
+   * @param config - A partial object of the OptionsControllerState type, containing the options to update.
+   */
+  updateModalOptions(config: Partial<OptionsControllerState>) {
+    this.#w3modal.updateOptions(config);
   }
 
   /*
