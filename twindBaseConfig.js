@@ -59,8 +59,12 @@ export default {
           DEFAULT: withHslOpacity('--primary'),
           foreground: withHslOpacity('--primary-foreground'),
         },
-        'primary-start': withHslOpacity('--primary-start'),
-        'primary-end': withHslOpacity('--primary-end'),
+        'primary-start': {
+          DEFAULT: withHslOpacity('--primary-start'),
+        },
+        'primary-end': {
+          DEFAULT: withHslOpacity('--primary-end'),
+        },
         secondary: {
           DEFAULT: withHslOpacity('--secondary'),
           foreground: withHslOpacity('--secondary-foreground'),
