@@ -83,6 +83,9 @@
       "path": "./extensions/apps/vibes-console"
     },
     {
+      "path": "./extensions/apps/world-builder"
+    },
+    {
       "path": "./libs/sdk"
     },
     {
