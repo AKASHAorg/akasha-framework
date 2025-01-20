@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Stack from '@akashaorg/design-system-core/lib/components/Stack';
 import { RootParcel } from '../root-parcel';
 import { MatchingBlock } from './common.types';
@@ -26,36 +26,46 @@ export const BlockParcel: React.FC<BlockParcelProps> = props => {
   const handleParcelError = React.useCallback(
     (parcelName: string) => {
       return error => {
-        if (logger) logger.error('error in parcel %s: %o', parcelName, error);
+        if (logger) logger.error(`error in parcel ${parcelName}: ${error}`);
         onError?.(error);
       };
     },
     [logger, onError],
   );
 
+  const parcelId = useMemo(() => {
+    const id = `${matchingBlock.blockInfo.propertyType}_${blockId}_${index}`;
+    if (rest.mode) {
+      return `${rest.mode}_${id}`;
+    }
+    return id;
+  }, [matchingBlock.blockInfo.propertyType, blockId, index, rest.mode]);
+
+  const parcelConfig = useMemo(() => {
+    return {
+      ...matchingBlock.config,
+      name: parcelId,
+    };
+  }, [matchingBlock.config, parcelId]);
+
+  const blockInfo = useMemo(() => {
+    return {
+      ...matchingBlock.blockInfo,
+      mode: rest.mode,
+      externalHandler: rest.mode === ContentBlockModes.EDIT ? rest?.externalHandler : null,
+    };
+  }, [matchingBlock.blockInfo, rest]);
+
   return (
-    <Stack
-      fullWidth
-      id={`${rest.mode}_${matchingBlock.blockInfo.propertyType}_${blockId}_${index}`}
-      key={`${rest.mode}_${matchingBlock.blockInfo.propertyType}_${blockId}_${index}`}
-    >
+    <Stack fullWidth id={parcelId} key={parcelId}>
       <RootParcel
-        config={{
-          ...matchingBlock.config,
-          name: `${matchingBlock.blockInfo.appName}_${matchingBlock.blockInfo.propertyType}_${blockId}_${index}`,
-        }}
+        config={parcelConfig}
         {...getContext()}
-        blockInfo={{
-          ...matchingBlock.blockInfo,
-          mode: rest.mode,
-          externalHandler: rest.mode === ContentBlockModes.EDIT ? rest?.externalHandler : null,
-        }}
+        blockInfo={blockInfo}
         blockData={matchingBlock.blockData}
         blockRef={blockRef}
         content={matchingBlock.content}
-        handleError={handleParcelError(
-          `${matchingBlock.blockInfo.appName}_${matchingBlock.blockInfo.propertyType}_${blockId}_${index}`,
-        )}
+        handleError={handleParcelError(parcelId)}
       />
     </Stack>
   );

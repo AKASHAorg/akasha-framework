@@ -29,14 +29,6 @@ export const RootParcel = (props: RootParcelProps) => {
   const isMounted = React.useRef(false);
   const isUnmounting = React.useRef(false);
 
-  const scheduleUpdate = useCallback(() => {
-    if (parcel.current && parcel.current.getStatus() === singleSpa.MOUNTED) {
-      parcel.current.update?.(otherProps).catch(err => {
-        handleError?.(err);
-      });
-    }
-  }, [singleSpa.MOUNTED, otherProps, handleError]);
-
   const mountParcel = useCallback(() => {
     if (parcelNodeRef.current && !parcel.current) {
       parcel.current = singleSpa.mountRootParcel(config, {
@@ -46,8 +38,6 @@ export const RootParcel = (props: RootParcelProps) => {
       parcel.current.mountPromise
         .then(() => {
           isMounted.current = true;
-          // @TODO: compare props and update
-          // scheduleUpdate();
         })
         .catch(err => {
           handleError?.(err);
@@ -81,7 +71,10 @@ export const RootParcel = (props: RootParcelProps) => {
 
   useEffect(() => {
     mountParcel();
-  }, [config, otherProps, mountParcel, singleSpa]);
+    return () => {
+      // unmountParcel();
+    };
+  }, [config, otherProps, mountParcel]);
 
   return <div ref={parcelNodeRef}></div>;
 };
